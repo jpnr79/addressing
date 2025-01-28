@@ -606,7 +606,7 @@ class PluginAddressingAddressing extends CommonDBTM {
          }
          $sql .= " GROUP BY `ip`, `port`.`mac` ORDER BY ipnum)";
       }
-      $res = $DB->query($sql);
+      $res = $DB->doQuery($sql);
       if ($res) {
          while ($row = $DB->fetchAssoc($res)) {
             $result["IP" . $row["ipnum"]][] = $row;
