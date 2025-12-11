@@ -2,6 +2,10 @@
 
 /*
  * @version $Id$
+<?php
+declare(strict_types=1);
+/*
+ * @version $Id$
  -------------------------------------------------------------------------
  addressing plugin for GLPI
  Copyright (C) 2009-2022 by the addressing Development Team.
