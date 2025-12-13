@@ -1,0 +1,223 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Call to static method showIPNetworkProperties\(\) on an unknown class IPNetwork\.$#'
+			identifier: class.notFound
+			count: 1
+			path: ajax/addressing.php
+
+		-
+			message: '#^Instantiated class Glpi\\Exception\\Http\\NotFoundHttpException not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: ajax/ping.php
+
+		-
+			message: '#^Call to an undefined static method Ajax\:\:commonDropdownUpdateItem\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 1
+			path: ajax/seePingTab.php
+
+		-
+			message: '#^Instantiated class Glpi\\Exception\\Http\\AccessDeniedHttpException not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: front/addressing.php
+
+		-
+			message: '#^Call to an undefined static method Search\:\:getOptions\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 1
+			path: hook.php
+
+		-
+			message: '#^Call to static method Register\(\) on an unknown class CronTask\.$#'
+			identifier: class.notFound
+			count: 1
+			path: hook.php
+
+		-
+			message: '#^Call to static method unregister\(\) on an unknown class CronTask\.$#'
+			identifier: class.notFound
+			count: 1
+			path: hook.php
+
+		-
+			message: '#^Function plugin_addressing_addOrderBy\(\) should return string but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: hook.php
+
+		-
+			message: '#^Call to an undefined static method Html\:\:printPager\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 1
+			path: src/Addressing.php
+
+		-
+			message: '#^Call to an undefined static method Html\:\:textarea\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 1
+			path: src/Addressing.php
+
+		-
+			message: '#^Call to an undefined static method Session\:\:isMultiEntitiesMode\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 1
+			path: src/Addressing.php
+
+		-
+			message: '#^Call to static method getTypeName\(\) on an unknown class FQDN\.$#'
+			identifier: class.notFound
+			count: 2
+			path: src/Addressing.php
+
+		-
+			message: '#^Call to static method getTypeName\(\) on an unknown class Vlan\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Addressing.php
+
+		-
+			message: '#^Instantiated class Glpi\\DBAL\\QueryExpression not found\.$#'
+			identifier: class.notFound
+			count: 12
+			path: src/Addressing.php
+
+		-
+			message: '#^Instantiated class Glpi\\DBAL\\QuerySubQuery not found\.$#'
+			identifier: class.notFound
+			count: 2
+			path: src/Addressing.php
+
+		-
+			message: '#^Instantiated class Glpi\\DBAL\\QueryUnion not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Addressing.php
+
+		-
+			message: '#^Method GlpiPlugin\\Addressing\\Addressing\:\:cleanDBonPurge\(\) should return GlpiPlugin\\Addressing\\nothing but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Addressing.php
+
+		-
+			message: '#^Static call to instance method CommonDBTM\:\:showMassiveActionsSubForm\(\)\.$#'
+			identifier: method.staticCall
+			count: 1
+			path: src/Addressing.php
+
+		-
+			message: '#^Undefined variable\: \$entities$#'
+			identifier: variable.undefined
+			count: 2
+			path: src/Addressing.php
+
+		-
+			message: '#^Undefined variable\: \$type_filter$#'
+			identifier: variable.undefined
+			count: 3
+			path: src/Addressing.php
+
+		-
+			message: '#^Method GlpiPlugin\\Addressing\\Profile\:\:showForm\(\) should return GlpiPlugin\\Addressing\\nothing but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/Profile.php
+
+		-
+			message: '#^Access to undefined constant Search\:\:CSV_OUTPUT\.$#'
+			identifier: classConstant.notFound
+			count: 1
+			path: src/Report.php
+
+		-
+			message: '#^Access to undefined constant Search\:\:HTML_OUTPUT\.$#'
+			identifier: classConstant.notFound
+			count: 1
+			path: src/Report.php
+
+		-
+			message: '#^Access to undefined constant Search\:\:PDF_OUTPUT_LANDSCAPE\.$#'
+			identifier: classConstant.notFound
+			count: 1
+			path: src/Report.php
+
+		-
+			message: '#^Access to undefined constant Search\:\:PDF_OUTPUT_PORTRAIT\.$#'
+			identifier: classConstant.notFound
+			count: 1
+			path: src/Report.php
+
+		-
+			message: '#^Call to static method getOutputForLegacyKey\(\) on an unknown class Glpi\\Search\\SearchEngine\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Report.php
+
+		-
+			message: '#^Call to static method prepareDataForSearch\(\) on an unknown class Glpi\\Search\\SearchEngine\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Report.php
+
+		-
+			message: '#^Class Glpi\\Search\\Output\\HTMLSearchOutput not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Report.php
+
+		-
+			message: '#^Call to an undefined static method Html\:\:textarea\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 1
+			path: src/ReserveIp.php
+
+		-
+			message: '#^Call to an undefined static method Session\:\:canViewAllEntities\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 1
+			path: src/ReserveIp.php
+
+		-
+			message: '#^Call to an undefined static method Session\:\:haveAccessToOneOfEntities\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 1
+			path: src/ReserveIp.php
+
+		-
+			message: '#^Call to static method dropdown\(\) on an unknown class State\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/ReserveIp.php
+
+		-
+			message: '#^Call to static method getTypeName\(\) on an unknown class FQDN\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/ReserveIp.php
+
+		-
+			message: '#^Call to static method getUserEntities\(\) on an unknown class Profile_User\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/ReserveIp.php
+
+		-
+			message: '#^Call to static method showIPNetworkProperties\(\) on an unknown class IPNetwork\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/ReserveIp.php
+
+		-
+			message: '#^Instantiated class NetworkPort not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/ReserveIp.php
+
+		-
+			message: '#^Method GlpiPlugin\\Addressing\\ReserveIp\:\:reserveip\(\) should return GlpiPlugin\\Addressing\\type but return statement is missing\.$#'
+			identifier: return.missing
+			count: 2
+			path: src/ReserveIp.php
