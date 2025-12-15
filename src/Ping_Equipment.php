@@ -89,7 +89,7 @@ class Ping_Equipment extends CommonDBTM
                 ],
             ],
             'WHERE' => [
-                $obj->getTable() . '.id' => $obj->fields['id'],
+                $obj->getTable() . '.id' => $obj->fields['id'] ?? '',
             ],
         ]);
 

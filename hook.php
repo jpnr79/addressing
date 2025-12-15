@@ -360,12 +360,12 @@ function plugin_addressing_dynamicReport($params)
         $addressingFilter = new Filter();
         if (isset($params['filter']) && $params['filter'] > 0) {
             if ($addressingFilter->getFromDB($params['filter'])) {
-                $ipdeb  = sprintf("%u", ip2long($addressingFilter->fields['begin_ip']));
-                $ipfin  = sprintf("%u", ip2long($addressingFilter->fields['end_ip']));
+                $ipdeb  = sprintf("%u", ip2long($addressingFilter->fields['begin_ip'] ?? ''));
+                $ipfin  = sprintf("%u", ip2long($addressingFilter->fields['end_ip'] ?? ''));
                 $result = $Addressing->compute($params["start"], ['ipdeb'       => $ipdeb,
                                                                                   'ipfin'       => $ipfin,
-                    'entities_id' => $addressingFilter->fields['entities_id'],
-                    'type_filter' => $addressingFilter->fields['type']]);
+                    'entities_id' => $addressingFilter->fields['entities_id'] ?? '',
+                    'type_filter' => $addressingFilter->fields['type'] ?? '']);
             }
         } else {
             $ipdeb  = sprintf("%u", ip2long($Addressing->fields["begin_ip"]));

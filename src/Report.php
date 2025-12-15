@@ -838,7 +838,7 @@ class Report extends CommonDBTM
                             'plugin_addressing_addressings_id' => $Addressing->getID(),
                             'ipname' => $num
                         ])) {
-                            $ping_value = $plugin_addressing_pinginfo->fields['ping_response'];
+                            $ping_value = $plugin_addressing_pinginfo->fields['ping_response'] ?? '';
                             $ping_action = 1;
                         } else {
                             $ping_value = 0;
@@ -930,7 +930,7 @@ class Report extends CommonDBTM
                                                     'addressing'
                                                 ) . " : "
                                                 . Html::convDateTime(
-                                                    $plugin_addressing_pinginfo->fields['ping_date']
+                                                    $plugin_addressing_pinginfo->fields['ping_date'] ?? ''
                                                 ) . "'></i>";
                                         }
                                     } else {
@@ -1105,7 +1105,7 @@ class Report extends CommonDBTM
                                                     'addressing'
                                                 ) . " : "
                                                 . Html::convDateTime(
-                                                    $plugin_addressing_pinginfo->fields['ping_date']
+                                                    $plugin_addressing_pinginfo->fields['ping_date'] ?? ''
                                                 ) . "'></i>";
                                             $rand = mt_rand();
                                             $reserv = "<a href=\"#\" data-bs-toggle='modal' data-bs-target='#reservation$rand'>";

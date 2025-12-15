@@ -114,7 +114,7 @@ class PingInfo extends CommonDBTM
 
         $result                     = $addressing->compute(0, ['ipdeb'    => $ipdeb,
                                                              'ipfin'    => $ipfin,
-                                                             'entities' => $addressing->fields['entities_id']]);
+                                                             'entities' => $addressing->fields['entities_id'] ?? '']);
         $plugin_addressing_pinginfo = new PingInfo();
         $save = $plugin_addressing_pinginfo->find(['plugin_addressing_addressings_id' => $addressing->getID()]);
         $plugin_addressing_pinginfo->deleteByCriteria(['plugin_addressing_addressings_id' => $addressing->getID()]);
