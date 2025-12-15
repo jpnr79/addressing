@@ -72,7 +72,7 @@ class Filter extends CommonDBTM
 
     public function getTabNameForItem(CommonGLPI $item, $withtemplate = 0)
     {
-        $nb = self::countForItem($item->fields['id'] ?? '');
+        $nb = self::countForItem(($item->fields['id'] ?? ''));
         return [self::createTabEntry(self::getTypeName(1), $nb)];
     }
 
@@ -118,7 +118,7 @@ class Filter extends CommonDBTM
         echo Html::hidden('plugin_addressing_addressings_id', ['value' => $options['items_id']]);
         echo "<td>" . __('Name') . "</td>";
         echo "<td>";
-        echo Html::input('name', ['value' => $this->fields['name'] ?? '', 'size' => 40]);
+        echo Html::input('name', ['value' => ($this->fields['name'] ?? ''), 'size' => 40]);
         echo "</td>";
         echo "</tr>";
 

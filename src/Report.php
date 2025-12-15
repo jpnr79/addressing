@@ -590,7 +590,7 @@ class Report extends CommonDBTM
                             $comment->getFromDBByCrit(
                                 ['ipname' => $num, 'plugin_addressing_addressings_id' => $Addressing->getID()]
                             );
-                            $comments = $comment->fields['comments'] ?? '';
+                            $comments = ($comment->fields['comments'] ?? '');
                             //                  $html_output .= $output::showItem( '<textarea id="comment'.$num.'"
                             //                      rows="5" cols="33">'.$comments.'</textarea>', $item_num, $row_num, "style='background-color:#e0e0e0' class='center' onChange='updateFA$rand()'");
                             if ($is_html_output) {
@@ -717,7 +717,7 @@ class Report extends CommonDBTM
                         $comment->getFromDBByCrit(
                             ['ipname' => $num, 'plugin_addressing_addressings_id' => $Addressing->getID()]
                         );
-                        $comments = $comment->fields['comments'] ?? '';
+                        $comments = ($comment->fields['comments'] ?? '');
 
                         if ($is_html_output) {
                             $content = "";
@@ -769,7 +769,7 @@ class Report extends CommonDBTM
                         $comment->getFromDBByCrit(
                             ['ipname' => $num, 'plugin_addressing_addressings_id' => $Addressing->getID()]
                         );
-                        $comments = $comment->fields['comments'] ?? '';
+                        $comments = ($comment->fields['comments'] ?? '');
                         //               $html_output .= $output::showItem( '<textarea id="comment'.$num.'"
                         //                      rows="5" cols="33">'.$comments.'</textarea>', $item_num, $row_num, "style='background-color:#e0e0e0' class='center' onChange='updateFA$rand()'");
                         if ($is_html_output) {
@@ -838,7 +838,7 @@ class Report extends CommonDBTM
                             'plugin_addressing_addressings_id' => $Addressing->getID(),
                             'ipname' => $num
                         ])) {
-                            $ping_value = $plugin_addressing_pinginfo->fields['ping_response'] ?? '';
+                            $ping_value = ($plugin_addressing_pinginfo->fields['ping_response'] ?? '');
                             $ping_action = 1;
                         } else {
                             $ping_value = 0;
@@ -930,7 +930,7 @@ class Report extends CommonDBTM
                                                     'addressing'
                                                 ) . " : "
                                                 . Html::convDateTime(
-                                                    $plugin_addressing_pinginfo->fields['ping_date'] ?? ''
+                                                    ($plugin_addressing_pinginfo->fields['ping_date'] ?? '')
                                                 ) . "'></i>";
                                         }
                                     } else {
@@ -974,7 +974,7 @@ class Report extends CommonDBTM
                                     $comment->getFromDBByCrit(
                                         ['ipname' => $num, 'plugin_addressing_addressings_id' => $Addressing->getID()]
                                     );
-                                    $comments = $comment->fields['comments'] ?? '';
+                                    $comments = ($comment->fields['comments'] ?? '');
                                     //                        $html_output .= $output::showItem( '<textarea id="comment'.$num.'"
                                     //                      rows="5" cols="33">'.$comments.'</textarea>', $item_num, $row_num, "style='background-color:#e0e0e0' class='center' onChange='updateFA$rand()'");
                                     if ($is_html_output) {
@@ -1105,7 +1105,7 @@ class Report extends CommonDBTM
                                                     'addressing'
                                                 ) . " : "
                                                 . Html::convDateTime(
-                                                    $plugin_addressing_pinginfo->fields['ping_date'] ?? ''
+                                                    ($plugin_addressing_pinginfo->fields['ping_date'] ?? '')
                                                 ) . "'></i>";
                                             $rand = mt_rand();
                                             $reserv = "<a href=\"#\" data-bs-toggle='modal' data-bs-target='#reservation$rand'>";
@@ -1164,7 +1164,7 @@ class Report extends CommonDBTM
                                     $comment->getFromDBByCrit(
                                         ['ipname' => $num, 'plugin_addressing_addressings_id' => $Addressing->getID()]
                                     );
-                                    $comments = $comment->fields['comments'] ?? '';
+                                    $comments = ($comment->fields['comments'] ?? '');
 
                                     //                        $html_output .= $output::showItem( '<textarea id="comment'.$num.'"
                                     //                      rows="5" cols="33">'.$comments.'</textarea>', $item_num, $row_num, "style='background-color:#e0e0e0' class='center' onChange='updateFA$rand()'");

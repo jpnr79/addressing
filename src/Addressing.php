@@ -80,9 +80,9 @@ class Addressing extends CommonDBTM
     public function cleanDBonPurge()
     {
         $temp1 = new PingInfo();
-        $temp1->deleteByCriteria(array('plugin_addressing_addressings_id' => $this->fields['id'] ?? ''));
+        $temp1->deleteByCriteria(array('plugin_addressing_addressings_id' => ($this->fields['id'] ?? '')));
         $temp2 = new Filter();
-        $temp2->deleteByCriteria(array('plugin_addressing_addressings_id' => $this->fields['id'] ?? ''));
+        $temp2->deleteByCriteria(array('plugin_addressing_addressings_id' => ($this->fields['id'] ?? '')));
     }
 
     public function rawSearchOptions()
@@ -253,7 +253,7 @@ class Addressing extends CommonDBTM
 
         echo "<td>" . __('Name') . "</td>";
         echo "<td>";
-        echo Html::input('name', ['value' => $this->fields['name'] ?? '', 'size' => 40]);
+        echo Html::input('name', ['value' => ($this->fields['name'] ?? ''), 'size' => 40]);
         echo "</td>";
 
         if ($Config->fields["alloted_ip"]) {
@@ -410,7 +410,7 @@ class Addressing extends CommonDBTM
         Dropdown::show('Vlan', [
             'name' => "vlans_id",
             'value' => $this->fields["vlans_id"],
-            'entity' => $this->fields['entities_id'] ?? ''
+            'entity' => ($this->fields['entities_id'] ?? '')
         ]);
         echo "</td>";
 
@@ -494,7 +494,7 @@ class Addressing extends CommonDBTM
         Dropdown::show('Location', [
             'name' => "locations_id",
             'value' => $this->fields["locations_id"],
-            'entity' => $this->fields['entities_id'] ?? ''
+            'entity' => ($this->fields['entities_id'] ?? '')
         ]);
         echo "</td>";
 
@@ -503,7 +503,7 @@ class Addressing extends CommonDBTM
         Dropdown::show('FQDN', [
             'name' => "fqdns_id",
             'value' => $this->fields["fqdns_id"],
-            'entity' => $this->fields['entities_id'] ?? ''
+            'entity' => ($this->fields['entities_id'] ?? '')
         ]);
         echo "</td>";
         echo "</tr>";
@@ -609,7 +609,7 @@ class Addressing extends CommonDBTM
 //        if (isset($entities) && is_array($entities)) {
 //            $entitiesStr = implode(',', array_map('intval', $entities));
 //        } else {
-//            $entitiesStr = isset($entities) ? $entities : $this->fields['entities_id'] ?? '';
+//            $entitiesStr = isset($entities) ? $entities : ($this->fields['entities_id'] ?? '');
 //        }
 //        $entitiesRestrict = $dbu->getEntitiesRestrictRequest(" AND ", "dev", "entities_id", $entitiesStr);
 //        $entitiesRestrict = preg_replace('/^ AND /', '', $entitiesRestrict);
@@ -702,7 +702,7 @@ class Addressing extends CommonDBTM
 //            } elseif (isset($entities)) {
 //                $entitiesStr = $entities;
 //            } else {
-//                $entitiesStr = $this->fields['entities_id'] ?? '';
+//                $entitiesStr = ($this->fields['entities_id'] ?? '');
 //            }
 //
 //            $entitiesRestrict = $dbu->getEntitiesRestrictRequest(" AND ", "dev", "entities_id", $entitiesStr);
@@ -800,7 +800,7 @@ class Addressing extends CommonDBTM
                 "",
                 "dev",
                 "entities_id",
-                $this->fields['entities_id'] ?? ''
+                ($this->fields['entities_id'] ?? '')
             ));
         }
         if (isset($type_filter)) {
@@ -867,7 +867,7 @@ class Addressing extends CommonDBTM
                 $where[] = new QueryExpression($dbu->getEntitiesRestrictRequest("", "dev", "entities_id", $entities));
             } else {
                 $where[] = new QueryExpression(
-                    $dbu->getEntitiesRestrictRequest("", "dev", "entities_id", $this->fields['entities_id'] ?? '')
+                    $dbu->getEntitiesRestrictRequest("", "dev", "entities_id", ($this->fields['entities_id'] ?? ''))
                 );
             }
             if (isset($type_filter)) {
@@ -984,14 +984,14 @@ class Addressing extends CommonDBTM
             $addressingFilter = new Filter();
             if ($filter > 0) {
                 if ($addressingFilter->getFromDB($filter)) {
-                    $ipdeb = sprintf("%u", ip2long($addressingFilter->fields['begin_ip'] ?? ''));
-                    $ipfin = sprintf("%u", ip2long($addressingFilter->fields['end_ip'] ?? ''));
+                    $ipdeb = sprintf("%u", ip2long(($addressingFilter->fields['begin_ip'] ?? '')));
+                    $ipfin = sprintf("%u", ip2long(($addressingFilter->fields['end_ip'] ?? '')));
 
                     $result = $this->compute($start, [
                         'ipdeb' => $ipdeb,
                         'ipfin' => $ipfin,
-                        'entities' => $addressingFilter->fields['entities_id'] ?? '',
-                        'type_filter' => $addressingFilter->fields['type'] ?? ''
+                        'entities' => ($addressingFilter->fields['entities_id'] ?? ''),
+                        'type_filter' => ($addressingFilter->fields['type'] ?? '')
                     ]);
                 }
             } else {
@@ -1012,26 +1012,26 @@ class Addressing extends CommonDBTM
                 if (count($lines)) {
                     if (count($lines) > 1) {
                         $nbipd++;
-                        if (!$this->fields['double_ip'] ?? ''
+                        if (!($this->fields['double_ip'] ?? '')
                             || (isset($params['seedoubleip']) && $params['seedoubleip'] == 0)) {
                             unset($result[$ip]);
                         }
                     }
                     if ((isset($lines[0]['pname']) && strstr($lines[0]['pname'], "reserv"))) {
                         $nbipr++;
-                        if (!$this->fields['alloted_ip'] ?? ''
+                        if (!($this->fields['alloted_ip'] ?? '')
                             || (isset($params['seereservedip']) && $params['seereservedip'] == 0)) {
                             unset($result[$ip]);
                         }
                     }
                     $nbipt++;
-                    if (!$this->fields['alloted_ip'] ?? ''
+                    if (!($this->fields['alloted_ip'] ?? '')
                         || (isset($params['seeallotedip']) && $params['seeallotedip'] == 0)) {
                         unset($result[$ip]);
                     }
                 } else {
                     $nbipf++;
-                    if (!$this->fields['free_ip'] ?? '' || (isset($params['seefreeip']) && $params['seefreeip'] == 0)) {
+                    if (!($this->fields['free_ip'] ?? '') || (isset($params['seefreeip']) && $params['seefreeip'] == 0)) {
                         unset($result[$ip]);
                     }
                 }
@@ -1041,19 +1041,19 @@ class Addressing extends CommonDBTM
             echo "<div class='spaced'>";
             echo "<table class='tab_cadre_fixe'><tr class='tab_bg_2 left'>";
             echo "<td class='alert alert-info'>";
-            $free = isset($params['seefreeip']) ? $params['seefreeip'] : $this->fields['free_ip'] ?? '';
+            $free = isset($params['seefreeip']) ? $params['seefreeip'] : ($this->fields['free_ip'] ?? '');
             if ($free == 1) {
                 echo __('Number of free IP', 'addressing') . " " . $nbipf . "<br>";
             }
-            $reserved = isset($params['seereservedip']) ? $params['seereservedip'] : $this->fields['reserved_ip'] ?? '';
+            $reserved = isset($params['seereservedip']) ? $params['seereservedip'] : ($this->fields['reserved_ip'] ?? '');
             if ($reserved == 1) {
                 echo __('Number of reserved IP', 'addressing') . " " . $nbipr . "<br>";
             }
-            $alloted = isset($params['seeallotedip']) ? $params['seeallotedip'] : $this->fields['alloted_ip'] ?? '';
+            $alloted = isset($params['seeallotedip']) ? $params['seeallotedip'] : ($this->fields['alloted_ip'] ?? '');
             if ($alloted == 1) {
                 echo __('Number of assigned IP (no doubles)', 'addressing') . " " . $nbipt . "<br>";
             }
-            $doubles = isset($params['seedoubleip']) ? $params['seedoubleip'] : $this->fields['double_ip'] ?? '';
+            $doubles = isset($params['seedoubleip']) ? $params['seedoubleip'] : ($this->fields['double_ip'] ?? '');
             if ($doubles == 1) {
                 echo __('Number of doubles IP', 'addressing') . " " . $nbipd . "<br>";
             }
@@ -1072,7 +1072,7 @@ class Addressing extends CommonDBTM
             }
             $ping_off = 1;
             $ping_on = 1;
-            if (isset($this->fields['use_ping']) && $this->fields['use_ping'] ?? '') {
+            if (isset($this->fields['use_ping']) && ($this->fields['use_ping'] ?? '')) {
                 $ping_off = isset($params['ping_off']) ? $params['ping_off'] : $ping_off;
                 if ($ping_off == 1) {
                     echo "<td class='legend_addressing plugin_addressing_ping_off'>" .
@@ -1131,7 +1131,7 @@ class Addressing extends CommonDBTM
 
             echo "</tr>";
 
-            if (isset($this->fields['use_ping']) && $this->fields['use_ping'] ?? '') {
+            if (isset($this->fields['use_ping']) && ($this->fields['use_ping'] ?? '')) {
                 echo "<tr class='tab_bg_1 center'>";
                 echo "<td>" . __('Ping: no response - free IP', 'addressing') . "</td><td>";
                 self::showSwitchField('ping_on', $ping_on);
@@ -1206,7 +1206,7 @@ class Addressing extends CommonDBTM
             echo "</div>";
 
             $numrows = count($result);
-            //         $numrows = 1 + ip2long($this->fields['end_ip'] ?? '') - ip2long($this->fields['begin_ip'] ?? '');
+            //         $numrows = 1 + ip2long(($this->fields['end_ip'] ?? '')) - ip2long(($this->fields['begin_ip'] ?? ''));
             $result = array_slice($result, $start, $_SESSION["glpilist_limit"]);
             $parameters = "id=$id&amp;ping_on=$ping_on&amp;ping_off=$ping_off&amp;filter=$filter&amp;seeallotedip=$alloted&amp;seedoubleip=$doubles&amp;seereservedip=$reserved&amp;seefreeip=$free";
             Html::printPager(
@@ -1222,7 +1222,7 @@ class Addressing extends CommonDBTM
             $ping_status = [$ping_off, $ping_on];
             $ping_response = $Report->displayReport($result, $this, $ping_status);
 
-            if ($this->fields['use_ping'] ?? '') {
+            if (($this->fields['use_ping'] ?? '')) {
                 $total_realfreeip = $nbipf - $ping_response;
                 echo "<table class='tab_cadre_fixe'><tr class='tab_bg_2 center'>";
                 echo "<td>";

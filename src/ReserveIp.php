@@ -241,7 +241,7 @@ class ReserveIp extends CommonDBTM
 
             $rand = Entity::dropdown(['name'   => 'entities_id',
                                    'entity' => $_SESSION["glpiactiveentities"],
-                                   'value'  => $addressing->fields['entities_id'] ?? ''
+                                   'value'  => ($addressing->fields['entities_id'] ?? '')
                                   ]);
 
             $params = ['action' => 'entities_networkip', 'entities_id' => '__VALUE__'];
@@ -281,7 +281,7 @@ class ReserveIp extends CommonDBTM
 
         Dropdown::show('Location', ['name'   => "locations_id",
                                   'value'  => $addressing->fields["locations_id"],
-                                  'entity' => $addressing->fields['entities_id'] ?? ''
+                                  'entity' => ($addressing->fields['entities_id'] ?? '')
         ]);
         echo "</div></td><td></td>";
         echo "</tr>";
@@ -326,13 +326,13 @@ class ReserveIp extends CommonDBTM
                <td><div id='entities_fqdn'>";
         Dropdown::show('FQDN', ['name'   => "fqdns_id",
                               'value'  => $addressing->fields["fqdns_id"],
-                              'entity' => $addressing->fields['entities_id'] ?? '']);
+                              'entity' => ($addressing->fields['entities_id'] ?? '')]);
         echo "</div></td><td></td></tr>";
 
         echo "<tr class='tab_bg_1'>
                <td>" . __("Network") . " :</td>
                <td><div id='entities_networkip'>";
-        IPNetwork::showIPNetworkProperties($addressing->fields['entities_id'] ?? '');
+        IPNetwork::showIPNetworkProperties(($addressing->fields['entities_id'] ?? ''));
         echo "</div></td>
             <td></td></tr>";
 
