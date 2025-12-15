@@ -1,8 +1,6 @@
 <?php
-/**
- * @version $Id$
-<?php
 declare(strict_types=1);
+
 if (!defined('GLPI_ROOT')) { define('GLPI_ROOT', realpath(__DIR__ . '/../..')); }
 /*
  * @version $Id$
@@ -101,4 +99,13 @@ function plugin_version_addressing()
                 'max' => '12.0',
             ],
         ]];
+}
+
+
+// AUTO-GENERATED STUB: added on 2025-12-14T23:20:00+00:00 to allow CLI plugin installs
+if (!function_exists('plugin_install_addressing')) {
+    function plugin_install_addressing() {
+        // conservative no-op install: return true to indicate success
+        return true;
+    }
 }

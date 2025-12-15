@@ -1,11 +1,13 @@
 <?php
-/*
+/***
  * @version $Id$
 <?php
 declare(strict_types=1);
+if (!defined('GLPI_ROOT')) { define('GLPI_ROOT', realpath(__DIR__ . '/../..')); }
 /*
  * @version $Id$
- -------------------------------------------------------------------------
+ -------------------------------------------------------------
+------------
  addressing plugin for GLPI
  Copyright (C) 2009-2022 by the addressing Development Team.
 
