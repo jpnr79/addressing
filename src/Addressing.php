@@ -1193,11 +1193,13 @@ class Addressing extends CommonDBTM
                                           document.location.reload();
                                        }
                                     },
-                                   error: function(xhr, status, error) {
-                                      console.log(xhr);
-                                      console.log(status);
-                                      console.log(error);
-                                    }
+                                              error: function(xhr, status, error) {
+                                                  console.error('[addressing/src/Addressing.php] AJAX error in updatePingInfo:', {
+                                                      xhr: xhr,
+                                                      status: status,
+                                                      error: error
+                                                  });
+                                                }
                                 });
                           });
                         </script>";
