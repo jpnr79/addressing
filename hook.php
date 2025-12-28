@@ -202,8 +202,26 @@ function plugin_addressing_install()
 
     //0.85 : new profile system
     Profile::migrateProfiles();
-    //Add all rights for current user profile
-    Profile::createFirstAccess($_SESSION['glpiactiveprofile']['id']);
+    // Add all rights for current user profile, avoid undefined array key/null offset warnings
+    $session_status = function_exists('session_status') ? session_status() : PHP_SESSION_DISABLED;
+    if ($session_status === PHP_SESSION_ACTIVE && isset($_SESSION) && is_array($_SESSION)) {
+        $profile_id = null;
+        if (array_key_exists('glpiactiveprofile', $_SESSION) && is_array($_SESSION['glpiactiveprofile']) && array_key_exists('id', $_SESSION['glpiactiveprofile']) && !empty($_SESSION['glpiactiveprofile']['id'])) {
+            $profile_id = $_SESSION['glpiactiveprofile']['id'];
+        }
+        if ($profile_id !== null) {
+            Profile::createFirstAccess($profile_id);
+        } else if (array_key_exists('glpiname', $_SESSION)) {
+            if (class_exists('Toolbox')) {
+                Toolbox::logInFile('addressing', sprintf(
+                    'WARNING [%s:%s] glpiactiveprofile not set or invalid during install, user=%s, session_keys=%s',
+                    __FILE__, __FUNCTION__, $_SESSION['glpiname'], implode(',', array_keys($_SESSION))
+                ));
+            }
+        }
+    } else {
+        // Session not active or not an array: skip all $_SESSION logic, do not log warning, guarantee no undefined array key
+    }
     //Drop old profile table : not used anymore
     $migration = new Migration("2.5.0");
     $migration->dropTable('glpi_plugin_addressing_profiles');
